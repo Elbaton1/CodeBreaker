@@ -8,7 +8,7 @@ const StartScreen = ({ onStart }) => {
       
       <p style={startScreenStyles.instructionsTitle}>How to Play:</p>
       <ul style={startScreenStyles.instructionsList}>
-        <li><strong>Movement:</strong> Use the arrow keys to move your ship around the screen.</li>
+        <li><strong>Movement:</strong> Use the WASD keys to move your ship around the screen.</li>
         <li><strong>Shooting:</strong> Aim with your mouse and click to shoot bullets at enemies.</li>
         <li><strong>Power-Ups:</strong> Collect power-ups to increase your firepower and survivability.</li>
         <li><strong>Survival:</strong> Survive waves of increasingly difficult enemies. Avoid collisions and manage your resources wisely.</li>
