@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import HUD from './HUD';
 import PuzzleModal from './PuzzleModal';
 
-// Import images as modules
+// Import images as modules ma aas
 import playerImage from '../assets/player.png';
 import enemyImage from '../assets/Mark.png';
 import bulletImage from '../assets/bullet.png';
