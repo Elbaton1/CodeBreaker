@@ -3,6 +3,11 @@ import Phaser from 'phaser';
 import HUD from './HUD';
 import PuzzleModal from './PuzzleModal';
 
+// Import images as modules
+import playerImage from '../assets/player.png';
+import enemyImage from '../assets/Mark.png';
+import bulletImage from '../assets/bullet.png';
+
 function PhaserGame() {
   const [gameStarted, setGameStarted] = useState(false);
   const [showPuzzle, setShowPuzzle] = useState(false);
@@ -11,8 +16,6 @@ function PhaserGame() {
   const [lives, setLives] = useState(3);
   const [enemiesDefeated, setEnemiesDefeated] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [shieldActive, setShieldActive] = useState(false);
-  const [shieldTimer, setShieldTimer] = useState(null);
 
   useEffect(() => {
     let game;
@@ -39,12 +42,10 @@ function PhaserGame() {
       game = new Phaser.Game(config);
 
       function preload() {
-        this.load.image('player', 'assets/player.png');
-        this.load.image('enemy', 'assets/Mark.png');
-        this.load.image('bullet', 'assets/bullet.png');
-        this.load.image('powerup', 'assets/powerup.png'); // Load power-up asset
-        this.load.audio('explosion', 'assets/explosion.wav');
-        this.load.audio('powerup', 'assets/powerup.wav');
+        // Loading images using the imported modules
+        this.load.image('player', playerImage);
+        this.load.image('enemy', enemyImage);
+        this.load.image('bullet', bulletImage);
       }
 
       function create() {
@@ -60,7 +61,6 @@ function PhaserGame() {
         });
 
         this.enemies = this.physics.add.group();
-        this.powerUps = this.physics.add.group();
 
         this.wasd = this.input.keyboard.addKeys({
           up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -75,12 +75,6 @@ function PhaserGame() {
           loop: true,
         });
 
-        this.time.addEvent({
-          delay: 10000, // Power-up every 10 seconds
-          callback: () => spawnPowerUp(this),
-          loop: true,
-        });
-
         this.input.on('pointerdown', (pointer) => shootBullet(this, pointer));
 
         this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
@@ -88,26 +82,15 @@ function PhaserGame() {
           enemy.destroy();
           setScore((prevScore) => prevScore + 10);
           setEnemiesDefeated((prev) => prev + 1);
-          this.sound.play('explosion');
-        });
-
-        this.physics.add.overlap(this.player, this.powerUps, (player, powerup) => {
-          activatePowerUp(powerup.texture.key, this);
-          powerup.destroy();
-          this.sound.play('powerup');
         });
 
         this.physics.add.collider(this.player, this.enemies, (player, enemy) => {
-          if (shieldActive) {
-            enemy.destroy();
-          } else {
-            player.setTint(0xff0000);
-            enemy.destroy();
-            setLives((prevLives) => prevLives - 1);
-            this.time.delayedCall(100, () => player.clearTint());
-            if (lives <= 0) {
-              gameOver(this);
-            }
+          player.setTint(0xff0000);
+          enemy.destroy();
+          setLives((prevLives) => prevLives - 1);
+          this.time.delayedCall(100, () => player.clearTint());
+          if (lives <= 0) {
+            gameOver(this);
           }
         });
       }
@@ -164,37 +147,6 @@ function PhaserGame() {
         enemy.setBounce(1);
       }
 
-      function spawnPowerUp(scene) {
-        const powerup = scene.powerUps.create(
-          Phaser.Math.Between(100, 1100),
-          Phaser.Math.Between(100, 700),
-          'powerup'
-        );
-        powerup.setScale(0.05); // Adjust power-up size
-        powerup.texture.key = 'shield'; // Only shield power-up
-      }
-
-      function activatePowerUp(type, scene) {
-        if (type === 'shield') {
-          setShieldActive(true);
-          setShieldTimer(10); // Start with 10 seconds
-
-          scene.time.addEvent({
-            delay: 1000,
-            callback: () => {
-              setShieldTimer((prevTimer) => {
-                if (prevTimer <= 1) {
-                  setShieldActive(false); // Deactivate shield when timer reaches 0
-                  return null;
-                }
-                return prevTimer - 1;
-              });
-            },
-            repeat: 9, // Run 9 more times for the 10 second countdown
-          });
-        }
-      }
-
       function gameOver(scene) {
         scene.physics.pause();
         setGameStarted(false);
@@ -206,7 +158,7 @@ function PhaserGame() {
         game.destroy(true);
       }
     };
-  }, [level, lives, gameStarted, shieldActive]);
+  }, [level, lives, gameStarted]);
 
   useEffect(() => {
     if (enemiesDefeated >= 5 * level) {
@@ -231,7 +183,7 @@ function PhaserGame() {
           <button onClick={() => setGameStarted(true)}>Start Game</button>
         </div>
       )}
-      {gameStarted && <HUD score={score} lives={lives} level={level} shieldTimer={shieldTimer} />}
+      {gameStarted && <HUD score={score} lives={lives} level={level} />}
       {showPuzzle && (
         <PuzzleModal
           onSolve={handleSolvePuzzle}
@@ -245,4 +197,3 @@ function PhaserGame() {
 }
 
 export default PhaserGame;
-
