@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.ffc57607.css",
-    "main.js": "/static/js/main.eeefba5d.js",
-    "index.html": "/index.html",
-    "main.ffc57607.css.map": "/static/css/main.ffc57607.css.map",
-    "main.eeefba5d.js.map": "/static/js/main.eeefba5d.js.map"
+    "main.css": "/CodeBreaker/static/css/main.ffc57607.css",
+    "main.js": "/CodeBreaker/static/js/main.eeefba5d.js",
+    "index.html": "/CodeBreaker/index.html",
+    "main.ffc57607.css.map": "/CodeBreaker/static/css/main.ffc57607.css.map",
+    "main.eeefba5d.js.map": "/CodeBreaker/static/js/main.eeefba5d.js.map"
   },
   "entrypoints": [
     "static/css/main.ffc57607.css",
