@@ -1,38 +1,225 @@
-.App {
+/* Reset basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #111;
+  color: #00ffcc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto; /* Allow scrolling on mobile */
+}
+
+/* Start Screen */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  color: #00ffcc;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.start-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #00ffcc;
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+}
+
+.start-screen button {
+  font-size: 1.8rem;
+  padding: 15px 30px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 10px;
+  color: #111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+  margin-top: 20px;
+}
+
+/* Game container */
+#game-container {
+  margin: 0 auto;
+  background-color: #222;
+  border: 3px solid #00ffcc;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 204, 0.5);
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 80vh; /* Adjust height for mobile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Canvas adjustments */
+canvas {
+  width: 100%;
+  height: auto;
+  max-height: 100vh; /* Ensure the game fits in the viewport */
+  border-radius: 15px;
+}
+
+/* HUD styling */
+.hud {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+/* Puzzle modal optimized for mobile */
+.puzzle-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #222, #111);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 255, 204, 0.6);
+  animation: modalPop 0.5s ease-in-out;
+  color: #00ffcc;
+  width: 95%;
+  max-width: 1000px;
+  max-height: 90%;
+  text-align: left;
+  overflow-y: auto;
+}
+
+.puzzle-modal h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.puzzle-modal p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  color: #f0f0f0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.puzzle-modal input {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #111;
+  color: #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.puzzle-modal input:focus {
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
+}
+
+.puzzle-modal button {
+  font-size: 1.7rem;
+  padding: 20px 40px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 10px;
+  color: #111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.7);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.puzzle-modal button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.9);
+}
+
+.puzzle-modal button:active {
+  transform: scale(0.98);
+  background-color: #00997e;
+}
+
+/* Animation for modal */
+@keyframes modalPop {
+  0% {
+    transform: translate(-50%, -60%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  body {
+    height: auto; /* Allow scrolling */
+    justify-content: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .start-screen h1 {
+    font-size: 2.5rem;
+  }
+
+  .start-screen button {
+    font-size: 1.5rem;
+    padding: 12px 30px;
+  }
+
+  #game-container {
+    height: 100vh;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+  }
+
+  .puzzle-modal {
+    padding: 20px;
+  }
+
+  .puzzle-modal h2 {
+    font-size: 2rem;
+  }
+
+  .puzzle-modal p {
+    font-size: 1.2rem;
+  }
+
+  .puzzle-modal button {
+    font-size: 1.4rem;
+    padding: 15px 30px;
   }
 }
