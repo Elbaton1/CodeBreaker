@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import HUD from './HUD';
 import PuzzleModal from './PuzzleModal';
 
-// Import images as modules ma aas
+// Import images as modules
 import playerImage from '../assets/player.png';
 import enemyImage from '../assets/Mark.png';
 import bulletImage from '../assets/bullet.png';
@@ -54,10 +54,10 @@ function PhaserGame() {
         this.player.setCollideWorldBounds(true);
         this.player.body.setSize(this.player.width * 0.7, this.player.height * 0.7, true);
 
+        // Removing the maxSize property for unlimited bullets
         this.bullets = this.physics.add.group({
           classType: Phaser.Physics.Arcade.Image,
           defaultKey: 'bullet',
-          maxSize: 20,
         });
 
         this.enemies = this.physics.add.group();
