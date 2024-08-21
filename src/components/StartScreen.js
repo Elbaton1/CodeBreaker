@@ -4,7 +4,7 @@ const StartScreen = ({ onStart }) => {
   return (
     <div className="start-screen" style={startScreenStyles.container}>
       <h1 style={startScreenStyles.title}>Codebreaker Blitz</h1>
-      <p style={startScreenStyles.tagline}>Sharpen your coding skills while battling waves of enemies!</p>
+      <p style={startScreenStyles.tagline}>Sharpen your coding skills while battling waves of enemies! YOU ONLY HAVE LIMITED BULLETS BE CAREFUL</p>
       
       <p style={startScreenStyles.instructionsTitle}>How to Play:</p>
       <ul style={startScreenStyles.instructionsList}>
