@@ -54,10 +54,11 @@ function PhaserGame() {
         this.player.setCollideWorldBounds(true);
         this.player.body.setSize(this.player.width * 0.7, this.player.height * 0.7, true);
 
-        // Removing the maxSize property for unlimited bullets
+        // Unlimited bullets with proper physics group setup
         this.bullets = this.physics.add.group({
           classType: Phaser.Physics.Arcade.Image,
           defaultKey: 'bullet',
+          runChildUpdate: true,
         });
 
         this.enemies = this.physics.add.group();
@@ -78,7 +79,7 @@ function PhaserGame() {
         this.input.on('pointerdown', (pointer) => shootBullet(this, pointer));
 
         this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
-          bullet.destroy(); // Destroy bullet on impact to free it up for reuse
+          bullet.destroy(); // Destroy bullet on impact
           enemy.destroy();
           setScore((prevScore) => prevScore + 10);
           setEnemiesDefeated((prev) => prev + 1);
@@ -119,17 +120,21 @@ function PhaserGame() {
       }
 
       function shootBullet(scene, pointer) {
-        const bullet = scene.bullets.get(scene.player.x, scene.player.y);
+        const bullet = scene.bullets.create(scene.player.x, scene.player.y, 'bullet'); // Create bullet in the group
         if (bullet) {
           bullet.setActive(true);
           bullet.setVisible(true);
           bullet.setScale(0.03); // Adjust bullet size
           scene.physics.moveTo(bullet, pointer.x, pointer.y, 300);
 
+          // Enable world bounds collision for the bullet
+          bullet.setCollideWorldBounds(true);
+
+          // Destroy the bullet when it goes off the world bounds
           bullet.body.onWorldBounds = true;
           bullet.body.world.on('worldbounds', function (body) {
             if (body.gameObject === bullet) {
-              bullet.destroy(); // Destroy the bullet when it goes offscreen
+              bullet.destroy();
             }
           });
         }
