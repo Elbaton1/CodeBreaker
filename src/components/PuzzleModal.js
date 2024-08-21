@@ -15,270 +15,189 @@ function PuzzleModal({ onSolve, questionIndex, score, setScore }) {
       question: "What is a variable in JavaScript?",
       hint: "Think of a variable like a labeled box where you can store a value, like a number or a word.",
       prompt: `### What is a Variable?
-      Imagine you have a box, and you write a label on it saying "favorite number." Inside the box, you can put any number you want. Later, if you want to change the number, you can just take out the old number and put in a new one. This is what **variables** do in JavaScript: they store information so you can use it later.
 
-      ### Why Do We Use Variables?
-      Variables help us keep track of things in our program, like scores in a game or names of people. Instead of repeating the same information over and over again, we put it in a variable.
+Imagine you're playing a game, and you want to keep track of your score. Instead of writing your score down on a piece of paper each time, you can let the computer remember it for you. In programming, we use **variables** to store information. A variable is like a container, or a labeled box, where you can store information and then access it whenever you need.
 
-      ### How to Create a Variable
-      There are three main ways to create variables in JavaScript:
-      
-      - **let**: Use this when you expect the value to change.
-      - **const**: Use this when the value will stay the same and won't change.
-      - **var**: This is an older way to create variables and isn't used much anymore.
+### Why Are Variables Important?
 
-      ### Example
-      Think of a game where you need to store the player's score and name. Here's how we can do that using variables:
-      \`\`\`javascript
-      let score = 100; // 'score' is a variable that stores the number 100
-      const playerName = "Alex"; // 'playerName' is a constant variable that stores the word 'Alex'
-      \`\`\`
+Variables are super important because they help us remember information. In a game, you might use a variable to store the player's score, the level they are on, or even how many lives they have left. Instead of hardcoding numbers or data into your game, you store them in variables, so the game can change and react as players progress.
 
-      Here, \`score\` holds the number 100, and \`playerName\` holds the name "Alex". The value of \`score\` can change as the game progresses, but \`playerName\` will stay the same.
+### How to Create a Variable
 
-      ### Your Turn
-      How would you create a variable named 'score' and put the number 100 in it? (Hint: Use 'let' because the score might change as the game goes on.)`,
+Creating a variable is like labeling a box and deciding what goes inside it. In JavaScript, we do this by using one of three keywords:
+- **let**: This is used when the value of the variable might change.
+- **const**: This is used when the value will not change.
+- **var**: This is the old way of creating variables and isn’t used much anymore.
+
+For example, in a game where we want to store the player's score, we might write:
+
+\`\`\`javascript
+let score = 100;
+\`\`\`
+
+This line of code tells JavaScript that we have a variable called \`score\`, and right now, it contains the value 100.
+
+### Why Use \`let\`?
+
+In the example above, we use \`let\` because the player's score will change as the game progresses. You might earn points, lose points, or reset the score to zero at the start of a new level.
+
+Here's how we might update the score as the game goes on:
+\`\`\`javascript
+score = score + 10; // The player earns 10 points!
+\`\`\`
+
+Now, the variable \`score\` holds a new value. This is why using \`let\` is useful—it lets us change the value whenever we need to.
+
+### Real-World Example
+
+Imagine you’re running a lemonade stand. You want to keep track of how much money you’ve made throughout the day. Instead of writing it down on paper and constantly updating it, you could use a variable called \`earnings\`:
+
+\`\`\`javascript
+let earnings = 0; // Start the day with $0 in earnings.
+earnings = earnings + 5; // You sell a lemonade and earn $5.
+earnings = earnings + 3; // You sell another lemonade and earn $3.
+\`\`\`
+
+At the end of the day, the variable \`earnings\` will contain the total amount of money you made.
+
+### Your Turn
+
+Imagine you’re writing a game, and you want to create a variable to hold the player's score. How would you create a variable called \`score\` and give it an initial value of 100? Remember to use \`let\` because the score might change as the game goes on.`,
       answer: "let score = 100;"
     },
     {
-      question: "What are data types in JavaScript?",
-      hint: "Data types help JavaScript understand what kind of information you are working with.",
-      prompt: `### What Are Data Types?
+      question: "What is a string in JavaScript?",
+      hint: "A string is like a word or sentence, surrounded by quotes.",
+      prompt: `### What is a String?
 
-      Just like in the real world, different things come in different forms. For example, your age is a number, but your name is a word. JavaScript uses **data types** to figure out what kind of information a variable is holding. It knows that you can do math with numbers but not with words.
+Think about when you write a text message. You're typing out words and sentences. In JavaScript, we use something called a **string** to represent text like this. A string can be a single word, a phrase, or even a whole paragraph.
 
-      ### Types of Data in JavaScript
-      There are a few common data types in JavaScript:
+### How to Create a String
 
-      - **String**: This is a word or a sentence. We surround it with quotes. For example, "Hello" or "Goodbye".
-      - **Number**: This is any number, like 5, 42, or 3.14.
-      - **Boolean**: This is a yes/no or true/false value. It helps us answer questions like, "Is the game over?" with either true or false.
+In JavaScript, a string is created by putting text between quotes, like this:
+\`\`\`javascript
+let greeting = "Hello, world!";
+\`\`\`
+Here, the string "Hello, world!" is stored inside the variable \`greeting\`.
 
-      ### Example
-      Let's say you have a game where you need to track the player's name, score, and whether they won the game:
-      \`\`\`javascript
-      let playerName = "John"; // String
-      let score = 50; // Number
-      let hasWon = false; // Boolean
-      \`\`\`
-      In this example, \`playerName\` is a string because it's a word, \`score\` is a number because it's a number, and \`hasWon\` is a boolean because it can only be true or false.
+### Why Are Strings Useful?
 
-      ### Your Turn
-      What type of data is \`42\` in JavaScript? (Hint: Think about whether it's a word, a number, or a yes/no value.)`,
-      answer: "Number"
+Strings are used everywhere in programming. For example, you might use a string to store a player's name in a game, a message to show on the screen, or even a piece of dialogue for a character.
+
+### Real-World Example
+
+Imagine you're building a game where players have to type their name before starting. You would store their name in a variable using a string, like this:
+\`\`\`javascript
+let playerName = "Alice";
+\`\`\`
+
+Now, the player's name is stored in the \`playerName\` variable, and you can use it whenever you need to display their name.
+
+### Your Turn
+
+Imagine you want to store a simple greeting in a variable. How would you create a variable named \`greeting\` that stores the text "Hello!"?`,
+      answer: `let greeting = "Hello!";`
     },
     {
-      question: "How do you define a function in JavaScript?",
-      hint: "A function is like a set of instructions that you can reuse whenever you need.",
-      prompt: `### What is a Function?
+      question: "What is a number in JavaScript?",
+      hint: "A number is just like it sounds, a number like 5 or 10.",
+      prompt: `### What is a Number?
 
-      Think of a function like a recipe. Imagine you have a recipe for making cookies. Instead of writing out all the steps each time you want to bake cookies, you can just write down the recipe once and use it over and over again. In programming, we use **functions** to do the same thing. We write down the instructions once, and we can call on them whenever we need.
+In JavaScript, numbers work just like they do in real life. You can use them to count, do math, or keep track of scores in a game. Numbers can be whole numbers, like 5 or 10, or they can be decimals, like 3.14.
 
-      ### Why Use Functions?
-      Functions help make our code simpler and less repetitive. Instead of writing the same code multiple times, we can put that code in a function and reuse it whenever we want.
+### How to Create a Number
 
-      ### Example
-      Let's say you want to greet a player by printing "Hello, Player!" on the screen. Here's how we could write that as a function:
-      \`\`\`javascript
-      function greet() {
-        console.log("Hello, Player!");
-      }
-      \`\`\`
-      Now, whenever we call the \`greet\` function, it will print "Hello, Player!" on the screen.
+You can store a number in a variable like this:
+\`\`\`javascript
+let age = 25;
+\`\`\`
 
-      ### Your Turn
-      How would you create a function named \`calculateSum\` that takes two numbers and adds them together? (Hint: Think of it as writing a recipe that will add two ingredients together.)`,
-      answer: `function calculateSum(a, b) { return a + b; }`
+Here, the number 25 is stored in the variable \`age\`.
+
+### Why Are Numbers Important?
+
+Numbers are super important in programming because they help you keep track of things. For example, in a game, you might use numbers to keep track of the player's score, the time remaining, or how many enemies are left.
+
+### Real-World Example
+
+Let’s say you’re creating a game where players earn points for each correct answer. You would use a number to store their score:
+\`\`\`javascript
+let score = 0; // The player starts with 0 points.
+score = score + 10; // The player earns 10 points for a correct answer.
+\`\`\`
+
+### Your Turn
+
+Imagine you want to store the number 18 in a variable called \`age\`. How would you write that in JavaScript?`,
+      answer: `let age = 18;`
     },
     {
-      question: "What is a loop in JavaScript?",
-      hint: "A loop lets you repeat the same action multiple times without writing the same code again.",
-      prompt: `### What is a Loop?
+      question: "How do you add two numbers in JavaScript?",
+      hint: "Think of adding two numbers together just like you do in math class.",
+      prompt: `### How to Add Two Numbers
 
-      Imagine you're playing a game where you have to collect 10 coins. Instead of writing "collect a coin" 10 times, you can tell the computer to repeat that action 10 times. This is what a **loop** does in programming: it tells the computer to do the same thing over and over until a certain condition is met.
+Just like in math, adding two numbers together in JavaScript is simple. You use the plus sign (\`+\`) to add numbers together.
 
-      ### Why Do We Use Loops?
-      Loops are great for repeating tasks without making the code too long. For example, instead of writing the same code to print numbers from 1 to 10, you can use a loop to do it for you.
+### Example
 
-      ### Example
-      Here's a simple loop that prints the numbers 0 to 4 on the screen:
-      \`\`\`javascript
-      for (let i = 0; i < 5; i++) {
-        console.log(i);
-      }
-      \`\`\`
-      This loop starts with \`i = 0\`, and it keeps printing numbers until \`i\` reaches 4.
+Let’s say you want to add 5 and 3:
+\`\`\`javascript
+let sum = 5 + 3;
+\`\`\`
 
-      ### Your Turn
-      Write a loop that prints the numbers from 1 to 3. (Hint: Start the loop at 1 and make it stop after 3.)`,
-      answer: `for (let i = 1; i <= 3; i++) { console.log(i); }`
+Now, \`sum\` will hold the value 8 because you added 5 and 3 together.
+
+### Why Add Numbers?
+
+Adding numbers is useful when you want to keep track of things like scores in a game, money earned, or even the number of items collected.
+
+### Real-World Example
+
+Imagine you’re building a game where players collect coins. Every time they collect a coin, you add 1 to their total. Here's how you might do that:
+\`\`\`javascript
+let coinsCollected = 0; // The player starts with 0 coins.
+coinsCollected = coinsCollected + 1; // The player collects a coin.
+\`\`\`
+
+Now, the variable \`coinsCollected\` holds the number of coins the player has collected.
+
+### Your Turn
+
+How would you add the numbers 10 and 15 together and store the result in a variable called \`total\`?`,
+      answer: `let total = 10 + 15;`
     },
     {
-      question: "What is an array in JavaScript?",
-      hint: "An array is like a list where you can store multiple pieces of related information.",
-      prompt: `### What is an Array?
+      question: "What is a boolean in JavaScript?",
+      hint: "Booleans represent yes or no, true or false values.",
+      prompt: `### What is a Boolean?
 
-      Imagine you have a list of your favorite fruits: apples, bananas, and cherries. Instead of writing down each fruit separately, you can store them all together in one list. In programming, we use **arrays** to store lists of related information, like a list of numbers or words.
+In real life, we often answer questions with yes or no. For example, "Is it raining?" could be answered with yes (true) or no (false). In JavaScript, **booleans** are just like this. They represent either \`true\` or \`false\`.
 
-      ### How Do Arrays Work?
-      Arrays are useful because they let you keep track of multiple pieces of information in one place. You can access the items in the array using their position (called an index), starting with 0 for the first item.
+### Example
 
-      ### Example
-      Here's an array that stores three fruits:
-      \`\`\`javascript
-      let fruits = ['apple', 'banana', 'cherry'];
-      \`\`\`
+Here’s how we store a boolean value:
+\`\`\`javascript
+let isRaining = false;
+\`\`\`
 
-      To get the first fruit from the list, we use its position in the array (index 0).
+This means that \`isRaining\` is currently \`false\`. We could change it to \`true\` if it starts raining.
 
-      Example:
-      \`\`\`javascript
-      console.log(fruits[0]); // Prints 'apple'
-      \`\`\`
+### Why Are Booleans Useful?
 
-      ### Your Turn
-      How would you get the first item from an array named \`fruits\`? (Hint: Remember that the first item is at position 0.)`,
-      answer: "fruits[0];"
-    },
-    {
-      question: "What is an object in JavaScript?",
-      hint: "An object is like a box where you store different pieces of information about one thing.",
-      prompt: `### What is an Object?
+Booleans help us make decisions in our programs. For example, you might want to check if a player has won a game. If the answer is \`true\`, you might show a victory message; if the answer is \`false\`, you might let the player keep playing.
 
-      Imagine you have a box labeled "car." Inside this box, you keep information like the car's brand, color, and speed. In programming, an **object** is a way to store different pieces of information about one thing, all in one place.
+### Real-World Example
 
-      ### Example
-      Let's say you want to store information about a car:
-      \`\`\`javascript
-      let car = {
-        brand: 'Toyota',
-        color: 'red',
-        speed: 120
-      };
-      \`\`\`
+Let’s say you’re creating a game where the player has to reach the finish line. You can use a boolean to check if the player has reached the finish line:
+\`\`\`javascript
+let hasFinished = false; // The player hasn't finished the race yet.
+hasFinished = true; // The player reaches the finish line, so we set it to true.
+\`\`\`
 
-      This object stores three pieces of information about the car: its brand, color, and speed. You can access this information whenever you need it.
+### Your Turn
 
-      ### Your Turn
-      How would you create an object called 'car' with the properties 'brand' as 'Toyota' and 'year' as 2020?`,
-      answer: "let car = { brand: 'Toyota', year: 2020 };"
-    },
-    {
-      question: "What is a conditional in JavaScript?",
-      hint: "Conditionals are like making decisions in a program based on certain conditions.",
-      prompt: `### What is a Conditional?
-
-      Imagine you're playing a game and you reach a checkpoint. Depending on your score, the game might give you extra health or continue as usual. In JavaScript, we use **conditional statements** to make decisions in our code. These decisions allow us to perform different actions based on different conditions.
-
-      ### Why Do We Use Conditionals?
-      Conditionals help make our programs smarter by allowing them to react to different situations. For example, we might want to check if a player's health is low and then restore it if needed.
-
-      ### Example
-      Let’s say we want to check if the player has enough points to win:
-      \`\`\`javascript
-      let score = 50;
-      if (score >= 100) {
-        console.log("You win!");
-      } else {
-        console.log("Keep playing!");
-      }
-      \`\`\`
-
-      ### Your Turn
-      Write a conditional statement that checks if the player's score is greater than or equal to 50, and if it is, print "Level Up!" Otherwise, print "Keep trying!".`,
-      answer: `if (score >= 50) { console.log("Level Up!"); } else { console.log("Keep trying!"); }`
-    },
-    {
-      question: "What is a switch statement in JavaScript?",
-      hint: "A switch statement allows us to choose between many possible actions.",
-      prompt: `### What is a Switch Statement?
-
-      Imagine you're at a restaurant, and the waiter gives you a menu with five items. Depending on what you choose, the waiter will bring you the corresponding item. In JavaScript, the **switch** statement lets us choose between multiple possible outcomes based on a specific value.
-
-      ### Why Use a Switch Statement?
-      Switch statements are useful when we have many options to choose from and don't want to write a lot of "if-else" statements.
-
-      ### Example
-      Let's say we want to choose a power-up in a game:
-      \`\`\`javascript
-      let powerUp = "speed";
-      switch(powerUp) {
-        case "speed":
-          console.log("You got the speed boost!");
-          break;
-        case "shield":
-          console.log("You got the shield!");
-          break;
-        case "health":
-          console.log("You got the health boost!");
-          break;
-        default:
-          console.log("No power-up selected.");
-      }
-      \`\`\`
-
-      ### Your Turn
-      Write a switch statement that prints different messages for different power-ups, like "speed," "shield," and "strength."`,
-      answer: `switch(powerUp) { 
-        case "speed": console.log("Speed boost!"); break; 
-        case "shield": console.log("Shield activated!"); break; 
-        case "strength": console.log("Strength boost!"); break; 
-        default: console.log("No power-up selected."); 
-      }`
-    },
-    {
-      question: "How do you declare a class in JavaScript?",
-      hint: "A class is like a blueprint for creating objects.",
-      prompt: `### What is a Class?
-
-      Think of a class like a blueprint for building something. For example, if you have a blueprint for a house, you can build multiple houses from that same blueprint. In JavaScript, a **class** is a blueprint for creating objects with similar properties and methods.
-
-      ### Example
-      Let’s say we want to create a class for a player in a game:
-      \`\`\`javascript
-      class Player {
-        constructor(name, score) {
-          this.name = name;
-          this.score = score;
-        }
-        greet() {
-          console.log("Hello, " + this.name);
-        }
-      }
-      let player1 = new Player("Alex", 0);
-      player1.greet(); // "Hello, Alex"
-      \`\`\`
-
-      ### Your Turn
-      How would you create a class called \`Car\` with a constructor that takes in \`brand\` and \`year\`?`,
-      answer: `class Car { constructor(brand, year) { this.brand = brand; this.year = year; } }`
-    },
-    {
-      question: "How do you handle errors in JavaScript?",
-      hint: "Try-catch blocks help us manage unexpected errors in our code.",
-      prompt: `### What is Error Handling?
-
-      Imagine you’re driving a car and something unexpected happens, like a flat tire. You have a plan in place to fix it and continue driving. In JavaScript, we use **try-catch** blocks to handle unexpected errors that might occur in our code, so the program can keep running smoothly.
-
-      ### Example
-      Let's say we’re trying to run some code that might throw an error:
-      \`\`\`javascript
-      try {
-        let result = someUndefinedFunction();
-      } catch (error) {
-        console.log("An error occurred: " + error.message);
-      }
-      \`\`\`
-
-      In this example, if something goes wrong inside the \`try\` block, the \`catch\` block will handle the error and print a message to the screen.
-
-      ### Your Turn
-      How would you write a try-catch block that tries to log the result of a function called \`divideByZero\`, but catches any errors that might occur?`,
-      answer: `try { 
-        let result = divideByZero(); 
-      } catch (error) { 
-        console.log("An error occurred: " + error.message); 
-      }`
+How would you create a variable named \`isSunny\` and set it to \`true\`?`,
+      answer: `let isSunny = true;`
     }
   ];
 
