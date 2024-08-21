@@ -3,7 +3,7 @@ import React from 'react';
 const StartScreen = ({ onStart }) => {
   return (
     <div className="start-screen" style={startScreenStyles.container}>
-      <h1 style={startScreenStyles.title}>Codebreaker Blitz</h1>
+      <h1 style={startScreenStyles.title}>Codebreaker Blitz;</h1>
       <p style={startScreenStyles.tagline}>Sharpen your coding skills while battling waves of enemies! YOU ONLY HAVE LIMITED BULLETS BE CAREFUL</p>
       
       <p style={startScreenStyles.instructionsTitle}>How to Play:</p>
@@ -14,6 +14,7 @@ const StartScreen = ({ onStart }) => {
         <li><strong>Survival:</strong> Survive waves of increasingly difficult enemies. Avoid collisions and manage your resources wisely.</li>
         <li><strong>Answer Coding Questions:</strong> After every few waves, answer JavaScript coding questions correctly to level up and progress in the game.</li>
         <li><strong>Boost Your Score:</strong> Correct answers boost your score. Keep leveling up and improving your skills!</li>
+        <li>In JavaScript when finishing a line of code we use ;  for example 'let Num = 5;'</li>
       </ul>
 
       <p style={startScreenStyles.additionalInfo}>Codebreaker Blitz is not just a game — it's a fun and interactive way to practice and learn JavaScript. Get ready to code your way to victory!</p>
